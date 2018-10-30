@@ -13,6 +13,10 @@ Release History
 - Language magic arguments are preserved in R Markdown, and also supported in ``light`` and ``percent`` scripts (#111, #114, #115)
 - First markdown cell exported as a docstring when using the Sphinx format (#107)
 
+**BugFixes**
+
+- ``percent`` format has a fail-safe for code cells with square brackets in the title (#116)
+
 0.8.3 (2018-10-19)
 ++++++++++++++++++++++
 
