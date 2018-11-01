@@ -275,8 +275,6 @@ class TextFileContentsManager(FileContentsManager, Configurable):
 
         if self.exists(path) and (type == 'notebook' or (type is None and ext in self.all_nb_extensions())):
             model = self._notebook_model(path, content=content)
-            if fmt != ext and content:
-                model['name'], _ = os.path.splitext(model['name'])
             if not content:
                 return model
 
@@ -312,6 +310,15 @@ class TextFileContentsManager(FileContentsManager, Configurable):
                                          type=type, format=format, load_alternative_format=False)
             else:
                 model_outputs = None
+
+            # Is this a paired `.ipynb` notebook? If so, we tell Jupyter that the `.ipynb`
+            # file is the one being opened.
+            if not source_format.endswith('.ipynb'):
+                for alt_fmt in fmt_group:
+                    if alt_fmt.endswith('.ipynb'):
+                        model['name'] = model['name'][:-len(source_format)] + alt_fmt
+                        model['path'] = model['path'][:-len(source_format)] + alt_fmt
+                        break
 
             try:
                 check_file_version(model['content'], nb_file + source_format, nb_file + outputs_format)

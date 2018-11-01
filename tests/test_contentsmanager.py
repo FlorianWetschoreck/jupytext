@@ -316,19 +316,19 @@ def test_save_to_light_percent_sphinx_format(nb_file, tmpdir):
         assert read_format_from_metadata(stream.read(), 'spx.py') == 'sphinx'
 
     model = cm.get(path=tmp_pct_py)
-    assert model['name'] == 'notebook.pct'
+    assert model['name'] == 'notebook.ipynb'
     compare_notebooks(nb, model['content'])
 
     model = cm.get(path=tmp_lgt_py)
-    assert model['name'] == 'notebook.lgt'
+    assert model['name'] == 'notebook.ipynb'
     compare_notebooks(nb, model['content'])
 
     model = cm.get(path=tmp_spx_py)
-    assert model['name'] == 'notebook.spx'
+    assert model['name'] == 'notebook.ipynb'
     # (notebooks not equal as we insert %matplotlib inline in sphinx)
 
     model = cm.get(path=tmp_ipynb)
-    assert model['name'] == 'notebook.pct'
+    assert model['name'] == 'notebook.ipynb'
     compare_notebooks(nb, model['content'])
 
 
