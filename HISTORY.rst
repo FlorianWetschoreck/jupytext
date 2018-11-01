@@ -3,6 +3,17 @@
 Release History
 ---------------
 
+0.8.5 (2018-11-??)
+++++++++++++++++++++++
+
+**Improvements**
+
+- Jupytext's contents manager uses path and name of the paired ``.ipynb`` file, if any. Consequently, the running file is now always the ``.ipynb`` one (#118)
+
+**BugFixes**
+
+- Using path and name of the paired ``.ipynb`` allows to download the ``.ipynb`` notebook (#118)
+
 0.8.4 (2018-10-29)
 ++++++++++++++++++++++
 
